@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import project_tracker.application.domain.UserModel;
 import project_tracker.application.utilities.BackendConnectors;
 
+
 public class RegisterController {
 
     @FXML

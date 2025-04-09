@@ -6,8 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import project_tracker.application.scene.RegisterScene;
+import lombok.Setter;
 
 public class LoginController {
 
@@ -37,8 +36,7 @@ public class LoginController {
 
     @FXML
     public void handleRegister(ActionEvent actionEvent) {
-        RegisterScene registerScene = new RegisterScene();
-        registerScene.register(new Stage());
+
     }
 }
 
