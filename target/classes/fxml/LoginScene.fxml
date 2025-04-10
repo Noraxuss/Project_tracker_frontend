@@ -21,6 +21,9 @@
                     GridPane.rowIndex="3" />
             <Button fx:id="RegisterButton" text="%login.register" onAction="#handleRegister" GridPane.columnIndex="1"
                     GridPane.rowIndex="3" />
+
+            <Label fx:id="systemResponseLabel" text="" GridPane.columnIndex="1" GridPane.rowIndex="4"
+                   style="-fx-text-fill: red" />
         </GridPane>
     </center>
 </BorderPane>
