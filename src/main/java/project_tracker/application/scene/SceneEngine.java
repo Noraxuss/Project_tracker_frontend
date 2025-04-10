@@ -28,6 +28,9 @@ public class SceneEngine {
         this.scenePairings = new Properties();
         this.sceneMap = new OneKeyTwoValueMap<>();
         this.sceneCache = new OneKeyTwoValueMap<>();
+
+        FXMLLoaderUtil.initialize(this);
+
         loadSceneMap();
         loadScenePairings();
         initializeStage();
@@ -96,10 +99,9 @@ public class SceneEngine {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+        splitPane.getItems().clear();
         splitPane.getItems().addAll(LeftScene.getInstance().getScene(),
                 RightScene.getInstance().getScene());
-
     }
 
     private Parent cacheScene(String sceneName) throws IOException {

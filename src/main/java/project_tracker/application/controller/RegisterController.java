@@ -3,14 +3,22 @@ package project_tracker.application.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import project_tracker.application.domain.UserModel;
+import project_tracker.application.scene.SceneEngine;
 import project_tracker.application.utilities.BackendConnectors;
+import project_tracker.application.utilities.SceneEngineAware;
 
 
-public class RegisterController {
+public class RegisterController implements SceneEngineAware {
+
+    private SceneEngine sceneEngine;
+
+    @FXML
+    public Label SystemResponseLabel;
 
     @FXML
     public javafx.scene.control.Label titleLabel;
@@ -44,10 +52,16 @@ public class RegisterController {
         if (validateUser(user)) {
             // Send the user data to the backend
             BackendConnectors.postRegister(user);
+            // Handle the response from the backend (e.g., show a success message)
+            SystemResponseLabel.setText("Registration successful");
+            // Optionally, switch to the login scene or another scene
+            sceneEngine.switchScene("login");
         } else {
             // Handle validation errors (e.g., show an error message)
             System.out.println("Validation failed");
+            SystemResponseLabel.setText("Validation failed");
         }
+
     }
 
     private boolean validateUser(UserModel user) {
@@ -57,10 +71,12 @@ public class RegisterController {
 
     @FXML
     public void handleBack(ActionEvent actionEvent) {
+        // Switch back to the login scene
+        sceneEngine.switchScene("login");
+    }
 
-        // Close the current window
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        stage.close();
-
+    @Override
+    public void setSceneEngine(SceneEngine engine) {
+        this.sceneEngine = engine;
     }
 }
